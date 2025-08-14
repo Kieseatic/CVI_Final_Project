@@ -1,0 +1,5 @@
+numpy==1.21.2
+scikit-image==0.18.3
+imageio==2.9.0
+scipy==1.7.1
+pandas==1.2.4
