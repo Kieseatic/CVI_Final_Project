@@ -1,7 +1,6 @@
 import os
 import argparse
 import numpy as np
-
 from frame_processor import process_video
 from motion_detector import detect_motion
 from viewport_tracker import track_viewport
