@@ -23,22 +23,20 @@ def process_video(video_path, target_fps=5, resize_dim=(1280, 720)):
     frames = []
     
     try:
-        # Open video file using imageio
         reader = imageio.get_reader(video_path)
         video_fps = reader.get_meta_data()['fps']
         
-        # Calculate frame interval to achieve target fps
+        # Calculate frame interval
         frame_interval = max(1, int(video_fps / target_fps))
         
         print(f"Video FPS: {video_fps}, extracting every {frame_interval} frames")
         
-        # Extract frames at the specified interval
+        # Extract frames
         for i, frame in enumerate(reader):
             if i % frame_interval == 0:
-                # Resize frame to standard resolution
                 resized_frame = transform.resize(
                     frame, 
-                    (resize_dim[1], resize_dim[0]),  # (height, width) for skimage
+                    (resize_dim[1], resize_dim[0]),  
                     anti_aliasing=True,
                     preserve_range=True
                 ).astype(np.uint8)
